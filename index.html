@@ -1,0 +1,301 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Mi OVA Educativo</title>
+</head>
+<body>
+
+<header>
+    <nav>
+        <img src="logo.png" alt="Logo" style="
+        height: 100px;
+        width: auto;
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 8px;
+    ">
+    <nav>
+
+        <button id="btn-inicio"       onclick="mostrar('inicio')"        class="activo">🏠 Inicio</button>
+        <button id="btn-contenido"    onclick="mostrar('contenido')">📖 Contenido</button>
+        <button id="btn-actividades"  onclick="mostrar('actividades')">📚 Actividades</button>
+        <button id="btn-evaluacion"   onclick="mostrar('evaluacion')">📝 Evaluación</button>
+        <button id="btn-agradecimiento" onclick="mostrar('agradecimiento')">✨ Gracias</button>
+    </nav>
+</header>
+
+
+<div id="barra-progreso"></div>
+
+<main>
+
+    <section id="inicio" class="seccion activa">
+
+        <h2 class="titulo-degradado">Números Primos y Compuestos</h2>
+
+        <div class="video">
+            <video controls class="video-estilizado">
+                <source src="Los_números_primos.mp4" type="video/mp4">
+                Tu navegador no soporta este video.
+            </video>
+        </div>
+
+        <h2 class="titulo-degradado">Explicación del video</h2>
+
+        <p class="texto-introductorio">
+            Un número primo es un número entero que debe cumplir una ley matemática estricta:
+            <strong>poseer exactamente dos divisores</strong>, que son el número uno y el propio número.
+            Para que esta regla se cumpla, el resultado de dividir el número entre sus únicos dos divisores
+            debe ser siempre un número entero perfecto, sin decimales ni fracciones.
+        </p>
+
+        <div class="contenedor-casos">
+            <h3>🔍 Examinando Casos Específicos:</h3>
+            <ul class="lista-casos">
+                <li><strong>El 2 y el 3:</strong> Son números primos porque solo pueden dividirse de forma exacta entre ellos mismos y la unidad.</li>
+                <li><strong>El 4, 6 y 8:</strong> No son primos. Por ejemplo, el 4 tiene tres divisores (4, 2 y 1) y el 6 tiene cuatro (6, 3, 2 y 1), lo que los descalifica de este grupo exclusivo.</li>
+                <li><strong>El 9:</strong> Es un caso importante porque, aunque es impar, no es primo ya que tiene tres divisores: el 9, el 1 y el 3.</li>
+                <li><strong>El 1:</strong> Tampoco es un número primo porque solo cuenta con un único divisor, incumpliendo la regla de tener exactamente dos.</li>
+            </ul>
+        </div>
+
+        <div class="nota-destacada">
+            <h4>💡 Una Excepción Única</h4>
+            <p>
+                Dentro de este conjunto, el <strong>número 2 es una excepción única</strong>, pues es el único número par que es primo.
+                Cualquier otro número par en el universo matemático tendrá al menos tres divisores: el 1, él mismo y el número 2,
+                quedando automáticamente fuera de la clasificación.
+            </p>
+        </div>
+
+        <blockquote class="curiosidad-matematica">
+            <p>
+                Estos números son considerados los <strong>"ladrillos"</strong> con los que se construyen los demás números
+                y tienen una importancia vital en el mundo moderno, ya que funcionan como un escudo invisible para la seguridad digital,
+                protegiendo cuentas bancarias y correos electrónicos mediante criptografía.
+            </p>
+            <p style="margin-bottom: 0;">
+                A pesar de que son infinitos, su distribución es un misterio; no existe una fórmula mágica para saber cuándo
+                aparecerá el siguiente, presentando un comportamiento que desafía la lógica y parece casi caótico.
+            </p>
+        </blockquote>
+
+    </section>
+
+    <section id="contenido" class="seccion">
+
+        <h2>Temas de Estudio</h2>
+
+        <button type="button" onclick="toggleTema()" class="btn-imagen-ova">
+            <img src="numeros primos y numeros compuesto.png" alt="Ver tema: Números Primos y Compuestos">
+        </button>
+
+        <div id="primer-compuesto" style="display: none;">
+            <div class="comprende-box">
+                <div class="label">Comprende</div>
+                <p style="margin-bottom:8px">Según la cantidad de divisores, los números naturales pueden ser:</p>
+                <ul>
+                    <li><b>Primos</b>, si tiene exactamente dos divisores: él mismo y el 1. Por ejemplo, 2, 3, 5, 7, 11, 13.</li>
+                    <li><b>Compuestos</b>, si tiene más de dos divisores. Por ejemplo, 6, 8, 9, 12 y 20.</li>
+                    <li>El número 1 no se considera ni primo ni compuesto.</li>
+                </ul>
+            </div>
+
+            <span class="sub-header">Desarrolla tus competencias</span>
+
+            <div class="exercise-block">
+                <div class="exercise-title">
+                    <span class="exercise-num">3</span>
+                    <b>Ejercitación.</b> Encuentra los números primos menores que 100. Aplica el proceso denominado criba de Eratóstenes.
+                </div>
+
+                <div class="sieve-wrap">
+                    <div id="sieve" class="sieve-grid"></div>
+                    <div class="sieve-legend">
+                        <div class="legend-title">Criba de Eratóstenes</div>
+                        <ol>
+                            <li>Tacha el número 1.</li>
+                            <li>Tacha los múltiplos de 2, excepto el 2.</li>
+                            <li>Tacha los múltiplos de 3, excepto el 3.</li>
+                            <li>Tacha los múltiplos de 5, excepto el 5.</li>
+                            <li>Tacha los múltiplos de 7, excepto el 7.</li>
+                            <li>Los números que no han sido tachados son los números primos entre 1 y 100.</li>
+                        </ol>
+                        <button onclick="applySieve()" class="btn-sieve">Aplicar criba ▶</button>
+                        <button onclick="resetSieve()" class="btn-reset">Reiniciar</button>
+                    </div>
+                </div>
+                <p style="margin-top:10px; font-size:13px">
+                    Los números primos entre 1 y 100 son:
+                    <span id="prime-list" style="color:var(--blue); font-weight:700"></span>
+                </p>
+
+                <div style="margin-top:22px">
+                    <div class="exercise-title">
+                        <span class="exercise-num">4</span>
+                        <b>Comunicación.</b> Determina si cada enunciado es verdadero (V) o falso (F). Justifica tus respuestas con ejemplos.
+                    </div>
+                    <div class="vf-row">
+                        <span>El número 1 es divisor de cualquier número.</span>
+                        <span class="vf-box"></span>
+                        <span class="ejemplo-line">Ejemplo: ___________________________</span>
+                    </div>
+                    <div class="vf-row">
+                        <span>Todo número es divisor de sí mismo.</span>
+                        <span class="vf-box"></span>
+                        <span class="ejemplo-line">Ejemplo: ___________________________</span>
+                    </div>
+                    <div class="vf-row">
+                        <span>No hay números pares primos.</span>
+                        <span class="vf-box"></span>
+                        <span class="ejemplo-line">Ejemplo: ___________________________</span>
+                    </div>
+                </div>
+
+                <div style="margin-top:22px">
+                    <div style="background:#fff; border:2px solid var(--blue); border-radius:var(--radius); padding:2px; display:inline-block; margin-bottom:8px">
+                        <span style="font-family:var(--font-title); font-size:15px; color:var(--blue); padding:4px 12px">Solución de problemas</span>
+                    </div>
+                    <div class="exercise-title">
+                        <span class="exercise-num">5</span>
+                        En quinto hay 30 estudiantes y en quinto B, hay 24. Los dos grupos de quinto grado participaron en una jornada ecológica. Los organizadores quieren hacer el mismo número de equipos en cada curso sin que sobre ningún estudiante. ¿Cuántos equipos pueden formar?
+                    </div>
+                    <div class="problem-box">
+                        <b>Pista:</b> Calcula el MCD (Máximo Común Divisor) de 30 y 24.
+                        <div class="math-row" style="margin-top:8px">
+                            <span class="math-chip">D₃₀ = {1, 2, 3, 5, 6, 10, 15, 30}</span>
+                            <span class="math-chip">D₂₄ = {1, 2, 3, 4, 6, 8, 12, 24}</span>
+                        </div>
+                        <p style="margin-top:8px; font-size:13px">MCD(30, 24) = <b>6</b> → Se pueden formar <b>6 equipos</b>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer">Pensamiento numérico • Proyecto SE</div>
+        </div>
+
+    </section>
+
+
+    <section id="actividades" class="seccion">
+
+        <h2>Actividades Interactivas</h2>
+
+        <div style="text-align: center; margin: 20px auto; max-width: 795px;">
+            <button type="button" onclick="toggleJuego('juego1')" class="btn-imagen-ova" aria-label="Abrir juego 1">
+                <img src="actividad 1.png" alt="Actividad 1 – ¡Jugar ahora!">
+            </button>
+            <div id="juego1" class="seccion-juego">
+                <div class="marco-educaplay-interno">
+                    <iframe
+                        src="https://www.educaplay.com/game/29137879-primos_y_numeros_compuestos.html"
+                        allow="fullscreen; autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="pie-actividad-juego">¡Pon a prueba tus conocimientos con este reto interactivo!</div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 20px auto; max-width: 795px;">
+            <button type="button" onclick="toggleJuego('juego2')" class="btn-imagen-ova" aria-label="Abrir juego 2">
+                <img src="actividad 2.png" alt="Actividad 2 – ¡Jugar ahora!">
+            </button>
+            <div id="juego2" class="seccion-juego">
+                <div class="marco-educaplay-interno">
+                    <iframe
+                        src="https://www.educaplay.com/game/29174565-primos_y_numeros_compuestos.html"
+                        allow="fullscreen; autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="pie-actividad-juego">¡Pon a prueba tus conocimientos con este reto interactivo!</div>
+            </div>
+        </div>
+
+
+<div style="text-align: center; margin: 20px auto; max-width: 795px;">
+    <button type="button" onclick="toggleJuego('juego3')" class="btn-imagen-ova" aria-label="Abrir juego 3">
+        <img src="actividad 3.png" alt="Actividad 3 – ¡Jugar ahora!">
+    </button>
+    <div id="juego3" class="seccion-juego">
+        <div class="marco-educaplay-interno">
+            <iframe
+                allow="fullscreen; autoplay; allow-top-navigation-by-user-activation"
+                allowfullscreen
+                width="795"
+                height="690"
+                frameborder="0"
+                src="https://www.educaplay.com/game/29195932-numeros_primos_ejercicio_3.html">
+            </iframe>
+        </div>
+        <div class="pie-actividad-juego">¡Pon a prueba tus conocimientos con este reto interactivo!</div>
+    </div>
+</div>
+
+    </section>
+
+    <section id="evaluacion" class="seccion">
+
+
+
+            <h2>Evaluación Final</h2>
+        <p class="texto-introductorio" style="margin-bottom:24px">
+            Responde las 20 preguntas. Puedes avanzar de página solo cuando hayas contestado todas.
+            Al final verás tu puntaje y la revisión completa de respuestas.
+        </p>
+
+        <div class="quiz-prog-bg"><div class="quiz-prog" id="quiz-prog"></div></div>
+        <div id="quiz-body"></div>
+
+
+
+    </section>
+
+    <section id="agradecimiento" class="seccion">
+        <div class="agradecimientos-container">
+                <div class="logo">
+                    <img src="logo.png" alt="Logo OVA">
+                </div>
+
+                <h2 style="color: var(--azul-profundo);">Reconocimientos</h2>
+                
+                <div class="credits-grid">
+                    <div class="card-credito">
+                        <span>Trabajo presentado por:</span>
+                        <h3>Jose Armando Mercado Ibarra</h3>
+                        <h3>Maria Fernanda lopez pabon </h3>
+                        <h3>KAROL DANIELA BUSTAMANTE BENITEZ </h3>
+                        <h3>SHERYK MARCELA HERNANDEZ IBARRA </h3>
+                    </div>
+
+                    <div class="card-credito">
+                        <span>Docente Asesor:</span>
+                        <h3>Eney Fernando Lomineth Villera</h3>
+                    </div>
+
+                    <div class="card-credito" style="border-bottom-color: var(--azul-claro);">
+                        <span>Docente:</span>
+                        <h3>ALY BENHUR CULCHAC DE LA VEGA</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2024 OVA Raíces Primas - Matemáticas Interactivas
+    </footer>
+        
+        
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
